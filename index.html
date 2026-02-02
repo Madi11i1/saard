@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سَرد | الرئيسية</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    color:#fff;
+}
+
+/* ===== الهيدر العلوي ===== */
+.header {
+    background:#332e24;
+    padding:14px 0;
+}
+
+.container {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:8px; /* مسافة بين الصورة والنص */
+}
+
+.logo img {
+    height:50px; /* نفس حجم النص */
+}
+
+.logo span {
+    font-size:24px;
+    font-weight:700;
+    color:#fff;
+}
+
+nav a {
+    color:#ccc;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:15px;
+}
+
+nav a:hover {
+    color:#fff;
+}
+
+/* ===== بانر النص فوق الصورة ===== */
+.banner {
+    position:relative;
+    text-align:center;
+    color:#fff;
+}
+
+.banner img {
+    width:100%;
+    max-height:400px;
+    object-fit:cover;
+    display:block;
+}
+
+.banner-text {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background: rgba(0,0,0,0.4); /* شفافية خلفية للنص */
+    padding:20px 30px;
+    border-radius:10px;
+}
+
+.banner-text h2 {
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.banner-text p {
+    font-size:18px;
+    line-height:1.8;
+}
+
+.banner-text a {
+    display:inline-block;
+    margin-top:20px;
+    background:#332e24;
+    color:#fff;
+    padding:10px 25px;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+.banner-text a:hover {
+    background:#ffffff;
+   color: #000;
+}
+
+/* ===== الجوال ===== */
+@media(max-width:600px){
+    .container {
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .banner-text {
+        width:90%;
+        padding:15px 20px;
+    }
+
+    .banner-text h2 {
+        font-size:24px;
+    }
+
+    .banner-text p {
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+
+            <img src="4.png" alt="سرد">
+           <span> سَرد </span>
+        </div>
+        <nav>
+            <a href="Info.html">المعلومات الشخصية</a>
+            <a href="salla.html">السلة</a>
+            <a href="books.html">الكتب</a>
+            <a href="index.html">الرئيسية</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== بانر النص فوق الصورة ===== -->
+<div class="banner">
+    <img src="b5.jpeg" alt="مجموعة كتب">
+    <div class="banner-text">
+        <h2>مرحبًا بك في سَرد</h2>
+        <p>
+            سَرد هو موقع تجريبي يهدف إلى عرض الكتب بطريقة بسيطة
+            ومنظمة، حيث يمكن للمستخدم تصفح الكتب وإضافتها إلى سلة
+            وهمية لمحاكاة تجربة المتاجر الإلكترونية </p>
+        <a href="books.html">تصفح الكتب</a>
+    </div>
+</div>
+  <footer style="
+  background-color:#332e24;
+  color:#ffffff;
+  text-align:center;
+  padding:18px 20px;
+  margin-top:30px;
+">
+
+  <p style="margin:6px 0; font-size:15px; font-weight:600;">
+    © 2026 BookStore — جميع الحقوق محفوظة
+  </p>
+
+  <p style="margin:6px 0; font-size:15px; font-weight:600;">
+    📧 support@bookstore.com | 📞 0500000000
+  </p>
+
+  <p style="margin:6px 0; font-size:15px; font-weight:700;">
+    عمل الطالب: عبدالهادي ضيف الله العطوي
+  </p>
+
+</footer>
+</body>
+</html>

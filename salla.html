@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سَرد | السلة</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+}
+
+/* ===== الهيدر ===== */
+.header {
+ background:#332e24;
+    padding:14px 0;
+}
+
+.container {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.logo {
+    display:flex;
+    align-items:center;
+    gap:8px; /* مسافة بين الصورة والنص */
+}
+
+.logo img {
+    height:50px; /* نفس حجم النص */
+}
+
+.logo span {
+    font-size:24px;
+    font-weight:700;
+    color:#fff;
+}
+
+nav a {
+    color:#ccc;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:15px;
+}
+
+nav a:hover {
+    color:#fff;
+}
+
+/* ===== السلة ===== */
+.cart {
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.cart h2 {
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.cart-item {
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cart-item img {
+    width:80px;
+    border-radius:5px;
+}
+
+.cart-item .info {
+    flex:1;
+    margin-right:15px;
+}
+
+.cart-item h3 {
+    margin:0 0 5px;
+}
+
+.remove {
+    background:#c0392b;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.remove:hover {
+    background:#a93226;
+}
+
+.total {
+    text-align:center;
+    font-size:22px;
+    margin-top:30px;
+    font-weight:bold;
+}
+
+.checkout {
+    display:block;
+    margin:30px auto;
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:12px 30px;
+    font-size:18px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.checkout:hover {
+    background:#333;
+}
+
+/* ===== الجوال ===== */
+@media (max-width:600px){
+    .container {
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .cart-item {
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+
+    .cart-item .info {
+        margin:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+         <div class="logo">
+
+            <img src="4.png" alt="سرد">
+           <span> سَرد </span>
+        </div>
+        <nav>
+             <a href="Info.html">المعلومات الشخصية</a>
+            <a href="salla.html">السلة</a>
+            <a href="books.html">الكتب</a>
+            <a href="index.html">الرئيسية</a>
+        </nav>
+    </div>
+</header>
+
+<div class="cart">
+    <h2>سلة المشتريات</h2>
+    <div id="cartItems"></div>
+    <div class="total" id="total"></div>
+    <button class="checkout" onclick="checkout()">إتمام الطلب</button>
+</div>
+
+<script>
+function loadCart(){
+    const cartItems = document.getElementById("cartItems");
+    const totalEl = document.getElementById("total");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    if(cart.length === 0){
+        cartItems.innerHTML = "<p style='text-align:center'>السلة فارغة</p>";
+        totalEl.textContent = "";
+        return;
+    }
+
+    cart.forEach((item,index)=>{
+        total += item.price;
+        cartItems.innerHTML += `
+        <div class="cart-item">
+            <img src="${item.img}">
+            <div class="info">
+                <h3>${item.title}</h3>
+                <p>${item.price} ريال</p>
+            </div>
+            <button class="remove" onclick="removeItem(${index})">حذف</button>
+        </div>`;
+    });
+
+    totalEl.textContent = "المجموع: " + total + " ريال";
+}
+
+function removeItem(index){
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    cart.splice(index,1);
+    localStorage.setItem("cart",JSON.stringify(cart));
+    loadCart();
+}
+
+function checkout(){
+    if(!localStorage.getItem("cart") || JSON.parse(localStorage.getItem("cart")).length === 0){
+        alert("السلة فارغة");
+        return;
+    }
+    alert("تم إتمام الطلب بنجاح ✅");
+    localStorage.removeItem("cart");
+    loadCart();
+}
+
+window.onload = loadCart;
+</script>
+
+</body>
+</html>
